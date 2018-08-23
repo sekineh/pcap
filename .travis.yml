@@ -15,7 +15,7 @@ addons:
 
 env:
   global:
-    - CRATE_NAME=pcap-alt
+    - CRATE_NAME=pcap
 
 matrix:
   # TODO These are all the build jobs. Adjust as necessary. Comment out what you

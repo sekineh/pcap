@@ -1,6 +1,6 @@
 [package]
 
-name = "pcap-alt"
+name = "pcap"
 version = "0.7.0"
 authors = ["Sean Bowe <ewillbefull@gmail.com>"]
 description = "A packet capture API around pcap/wpcap"
