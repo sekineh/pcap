@@ -61,8 +61,8 @@ impl Packets {
     }
 
     pub fn push(&mut self,
-                tv_sec: libc::time_t,
-                tv_usec: libc::suseconds_t,
+                tv_sec: i32,
+                tv_usec: i32,
                 caplen: u32,
                 len: u32,
                 data: &[u8]) {

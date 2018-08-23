@@ -19,6 +19,9 @@ mio = { version = "0.6", optional = true }
 tokio-core = { version = "0.1", optional = true }
 futures = { version = "0.1", optional = true }
 
+[target.'cfg(windows)'.dependencies]
+winapi = "0.2"
+
 [dev-dependencies]
 tempdir = "0.3"
 
@@ -65,3 +68,4 @@ path = "examples/getstatistics.rs"
 [[example]]
 name = "streamlisten"
 path = "examples/streamlisten.rs"
+required-features = ["tokio"] 
