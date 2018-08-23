@@ -3,7 +3,7 @@
 
 use libc::{c_int, c_uint, c_char, c_uchar, c_ushort, timeval, FILE};
 #[cfg(windows)]
-use winapi::ws2def::SOCKADDR as sockaddr;
+use winapi::shared::ws2def::SOCKADDR as sockaddr;
 #[cfg(not(windows))]
 use libc::sockaddr;
 #[repr(C)]

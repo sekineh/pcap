@@ -20,7 +20,7 @@ tokio-core = { version = "0.1", optional = true }
 futures = { version = "0.1", optional = true }
 
 [target.'cfg(windows)'.dependencies]
-winapi = "0.2"
+winapi = { version = "0.3.5", features = ["ws2def"] }
 
 [dev-dependencies]
 tempdir = "0.3"
