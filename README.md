@@ -1,4 +1,4 @@
-[![Build status](https://api.travis-ci.org/sekineh/pcap-alt.svg)](https://travis-ci.org/sekineh/pcap-alt) 
+[![Build Status](https://travis-ci.org/sekineh/pcap-alt.svg?branch=master)](https://travis-ci.org/sekineh/pcap-alt)
 [![Build status](https://ci.appveyor.com/api/projects/status/a9c075pkdbg8u3q7?svg=true)](https://ci.appveyor.com/project/sekineh/pcap-alt)
 
 # pcap-alt
