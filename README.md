@@ -1,4 +1,14 @@
-# pcap [![Build status](https://api.travis-ci.org/ebfull/pcap.svg)](https://travis-ci.org/ebfull/pcap) [![Crates.io](https://img.shields.io/crates/v/pcap.svg)](https://crates.io/crates/pcap) [![Docs.rs](https://docs.rs/pcap/badge.svg)](https://docs.rs/pcap) #
+[![Build status](https://api.travis-ci.org/sekineh/pcap-alt.svg)](https://travis-ci.org/sekineh/pcap-alt) 
+[![Build status](https://ci.appveyor.com/api/projects/status/a9c075pkdbg8u3q7?svg=true)](https://ci.appveyor.com/project/sekineh/pcap-alt)
+
+# pcap-alt
+
+A folk of `pcap` crate, a idiomatic wrapper to the libpcap/WinPcap library.
+
+Tested on:
+- Rust Windows 64-bit/32-bit MSVC `stable` toolchain + WinPcap 4.1.3
+  - x86_64-pc-windows-msvc (64-bit MSVC)
+  - i686-pc-windows-msvc (32-bit MSVC)
 
 ### [Documentation](https://docs.rs/pcap)
 
@@ -23,6 +33,15 @@ See examples for usage.
 ## Windows
 
 Install [WinPcap](http://www.winpcap.org/install/default.htm).
+
+For MSVC toolchain, unpack [WpdPack_4_1_2.zip](http://www.winpcap.org/install/bin/WpdPack_4_1_2.zip)
+and set up the `LIB` environment varible to point the location of `wpcap.lib`
+```
+# for 64 bit
+cmd> set LIB=c:\path\to\WpdPack\Lib\x64
+# for 32 bit
+cmd> set LIB=c:\path\to\WpdPack\Lib
+```
 
 Place wpcap.dll in your `C:\Rust\bin\rustlib\x86_64-pc-windows-gnu\lib\` directory on 64 bit
 or `C:\Rust\bin\rustlib\i686-pc-windows-gnu\lib\` on 32 bit.
