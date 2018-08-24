@@ -48,6 +48,7 @@ install:
         $Env:LIB += ';c:\projects\libpcap\Win32\WpdPack\Lib'
       }
   - ps: $env:RUST_BACKTRACE=1
+  - echo %RUST_BACKTRACE%
 
 test_script:
   - ps: cargo build --target $env:TARGET -v
