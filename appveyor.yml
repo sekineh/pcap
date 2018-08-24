@@ -51,10 +51,10 @@ install:
   - echo %RUST_BACKTRACE%
 
 test_script:
-  - ps: cargo build --target $env:TARGET -v
-  - ps: cargo test --target $env:TARGET -v
-  - ps: cargo build --target $env:TARGET -v --release
-  - ps: cargo test --target $env:TARGET -v --release
+  - cargo build --target %TARGET% -v
+  - cargo test --target %TARGET% -v
+  - cargo build --target %TARGET% -v --release
+  - cargo test --target %TARGET% -v --release
 
 before_deploy:
   # TODO Update this to build the artifacts that matter to you
