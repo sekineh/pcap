@@ -47,6 +47,7 @@ install:
       } ElseIf ($Env:TARGET -eq 'i686-pc-windows-msvc') {
         $Env:LIB += ';c:\projects\libpcap\Win32\WpdPack\Lib'
       }
+  - ps: $env:RUST_BACKTRACE=1
 
 # TODO This is the "test phase", tweak it as you see fit
 test_script:
