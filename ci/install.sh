@@ -18,16 +18,24 @@ main() {
             #rustup target add $TARGET
             ;;
         i686-unknown-linux-gnu)
-            rustup target add $TARGET
-            sudo dpkg --add-architecture i386
+            local arch=i386
+            sudo apt-get install gcc-multilib
+            sudo dpkg --add-architecture $arch
             sudo apt update
-            sudo apt install -y libpcap0.8-dev:i386
+            sudo apt-get install libc6-dev:$arch gcc:$arch
+            sudo apt install -y libpcap0.8-dev:$arch
+
+            rustup target add $TARGET
             ;;
         aarch64-unknown-linux-gnu)
-            rustup target add $TARGET
-            sudo dpkg --add-architecture arm64
+            local arch=amd64
+            sudo apt-get install gcc-multilib
+            sudo dpkg --add-architecture $arch
             sudo apt update
-            sudo apt install -y libpcap0.8-dev:arm64
+            sudo apt-get install libc6-dev:$arch gcc:$arch
+            sudo apt install -y libpcap0.8-dev:$arch
+
+            rustup target add $TARGET
             ;;
         aarch64-apple-ios)
             rustup target install aarch64-apple-ios
