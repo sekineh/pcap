@@ -290,6 +290,8 @@ impl<'b> Deref for Packet<'b> {
 #[repr(C)]
 #[derive(Copy, Clone)]
 /// Represents a packet header provided by pcap, including the timeval, caplen and len.
+/// 
+/// The `ts` field is libc::timeval so the size may vary between 32-bit and 64-bit *NIX
 pub struct PacketHeader {
     pub ts: libc::timeval,
     pub caplen: u32,
