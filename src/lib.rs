@@ -298,6 +298,19 @@ pub struct PacketHeader {
     pub len: u32,
 }
 
+impl PacketHeader {
+    /// Creates a `PacketHeader`.
+    ///
+    /// Note that the size of `tv_sec` and `tv_usec` are platfrom-dependent and equal to the size of `c_long`.
+    pub fn new(tv_sec: libc::c_long, tv_usec: libc::c_long, caplen: u32, len: u32) -> Self {
+        Self {
+            ts: libc::timeval { tv_sec, tv_usec },
+            caplen,
+            len,
+        }
+    }
+}
+
 impl fmt::Debug for PacketHeader {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         write!(f,
