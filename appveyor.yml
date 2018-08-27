@@ -54,8 +54,10 @@ install:
 test_script:
   - cargo build --target %TARGET% -v
   - cargo test --target %TARGET% -v
+  - cargo test --target %TARGET% -v --features pcap-fopen-offline-precision
   - cargo build --target %TARGET% -v --release
   - cargo test --target %TARGET% -v --release
+  - cargo test --target %TARGET% -v --features pcap-fopen-offline-precision
 
 before_deploy:
   # TODO Update this to build the artifacts that matter to you
