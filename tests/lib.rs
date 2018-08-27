@@ -60,20 +60,16 @@ impl Packets {
         }
     }
 
-    pub fn push(&mut self,
-                tv_sec: libc::c_long,
-                tv_usec: libc::c_long,
-                caplen: u32,
-                len: u32,
-                data: &[u8]) {
-        self.headers.push(PacketHeader {
-                              ts: libc::timeval {
-                                  tv_sec: tv_sec,
-                                  tv_usec: tv_usec,
-                              },
-                              caplen: caplen,
-                              len: len,
-                          });
+    pub fn push(
+        &mut self,
+        tv_sec: libc::c_long,
+        tv_usec: libc::c_long,
+        caplen: u32,
+        len: u32,
+        data: &[u8],
+    ) {
+        self.headers
+            .push(PacketHeader::new(tv_sec, tv_usec, caplen, len));
         self.data.push(data.to_vec());
     }
 
@@ -163,8 +159,8 @@ fn test_raw_fd_api() {
     let data: Vec<u8> = (0..191).cycle().take(N_PACKETS * 1024).collect();
     let mut packets = Packets::new();
     for i in 0..N_PACKETS {
-        packets.push(1460408319 + i as libc::time_t,
-                     1000 + i as libc::suseconds_t,
+        packets.push(1460408319 + i as libc::c_long,
+                     1000 + i as libc::c_long,
                      1024,
                      1024,
                      &data[i * 1024..(i + 1) * 1024]);
