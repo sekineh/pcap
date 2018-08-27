@@ -19,15 +19,15 @@ main() {
             ;;
         i686-unknown-linux-gnu)
             rustup target add $TARGET
-            dpkg --add-architecture i386
-            apt update
-            apt install libpcap0.8-dev:i386
+            sudo dpkg --add-architecture i386
+            sudo apt update
+            sudo apt install -y libpcap0.8-dev:i386
             ;;
         aarch64-unknown-linux-gnu)
             rustup target add $TARGET
-            dpkg --add-architecture arm64
-            apt update
-            apt install libpcap0.8-dev:arm64
+            sudo dpkg --add-architecture arm64
+            sudo apt update
+            sudo apt install -y libpcap0.8-dev:arm64
             ;;
         aarch64-apple-ios)
             rustup target install aarch64-apple-ios
