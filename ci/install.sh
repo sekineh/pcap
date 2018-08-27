@@ -11,8 +11,8 @@ main() {
     fi
 
 
-    Builds for iOS are done on OSX, but require the specific target to be
-    installed.
+    # Builds for iOS are done on OSX, but require the specific target to be
+    # installed.
     case $TARGET in
         x86_64-unknown-linux-gnu)
             #rustup target add $TARGET
