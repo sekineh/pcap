@@ -57,7 +57,14 @@ test_script:
   - cargo test --target %TARGET% -v --features pcap-fopen-offline-precision
   - cargo build --target %TARGET% -v --release
   - cargo test --target %TARGET% -v --release
-  - cargo test --target %TARGET% -v --features pcap-fopen-offline-precision
+  - cargo test --target %TARGET% -v --release --features pcap-fopen-offline-precision
+  - cargo build --target %TARGET% -v --example listenlocalhost
+  - cargo build --target %TARGET% -v --example getdevices
+  - cargo build --target %TARGET% -v --example easylisten
+  - cargo build --target %TARGET% -v --example savefile
+  - cargo build --target %TARGET% -v --example getstatistics
+  # - cargo build --target %TARGET% -v --example streamlisten
+  
 
 before_deploy:
   # TODO Update this to build the artifacts that matter to you
