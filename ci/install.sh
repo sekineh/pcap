@@ -18,22 +18,19 @@ main() {
             #rustup target add $TARGET
             ;;
         i686-unknown-linux-gnu)
-            local arch=i386
-            sudo apt-get install gcc-multilib
-            sudo dpkg --add-architecture $arch
             sudo apt update
-            sudo apt-get install libc6-dev:$arch gcc:$arch
-            sudo apt install -y libpcap0.8-dev:$arch
+            sudo apt-get install -y --no-install-recommends \
+                gcc-multilib libc6-dev ca-certificates
+            sudo apt-get install -y libpcap0.8-dev
 
             rustup target add $TARGET
             ;;
         aarch64-unknown-linux-gnu)
-            local arch=amd64
-            sudo apt-get install gcc-multilib
-            sudo dpkg --add-architecture $arch
-            sudo apt update
-            sudo apt-get install libc6-dev:$arch gcc:$arch
-            sudo apt install -y libpcap0.8-dev:$arch
+            sudo apt-get update
+            sudo apt-get install -y --no-install-recommends \
+                gcc libc6-dev ca-certificates \
+                gcc-aarch64-linux-gnu libc6-dev-arm64-cross qemu-user
+            sudo apt-get install -y libpcap0.8-dev
 
             rustup target add $TARGET
             ;;
