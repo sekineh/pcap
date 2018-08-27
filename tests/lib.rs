@@ -159,8 +159,8 @@ fn test_raw_fd_api() {
     let data: Vec<u8> = (0..191).cycle().take(N_PACKETS * 1024).collect();
     let mut packets = Packets::new();
     for i in 0..N_PACKETS {
-        packets.push(1460408319 + i,
-                     1000 + i,
+        packets.push(1460408319 + i as libc::ulong,
+                     1000 + i as libc::ulong,
                      1024,
                      1024,
                      &data[i * 1024..(i + 1) * 1024]);
