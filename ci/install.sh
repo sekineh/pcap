@@ -10,29 +10,44 @@ main() {
         sort=gsort  # for `sort --sort-version`, from brew's coreutils.
     fi
 
-    if [ $TARGET != x86_64-unknown-linux-gnu ]; then
-        rustup target add $TARGET
-    fi
 
-    # Builds for iOS are done on OSX, but require the specific target to be
-    # installed.
-    # case $TARGET in
-    #     aarch64-apple-ios)
-    #         rustup target install aarch64-apple-ios
-    #         ;;
-    #     armv7-apple-ios)
-    #         rustup target install armv7-apple-ios
-    #         ;;
-    #     armv7s-apple-ios)
-    #         rustup target install armv7s-apple-ios
-    #         ;;
-    #     i386-apple-ios)
-    #         rustup target install i386-apple-ios
-    #         ;;
-    #     x86_64-apple-ios)
-    #         rustup target install x86_64-apple-ios
-    #         ;;
-    # esac
+    Builds for iOS are done on OSX, but require the specific target to be
+    installed.
+    case $TARGET in
+        x86_64-unknown-linux-gnu)
+            #rustup target add $TARGET
+            ;;
+        i686-unknown-linux-gnu)
+            rustup target add $TARGET
+            dpkg --add-architecture i386
+            apt update
+            apt install libpcap0.8-dev:i386
+            ;;
+        aarch64-unknown-linux-gnu)
+            rustup target add $TARGET
+            dpkg --add-architecture arm64
+            apt update
+            apt install libpcap0.8-dev:arm64
+            ;;
+        aarch64-apple-ios)
+            rustup target install aarch64-apple-ios
+            ;;
+        armv7-apple-ios)
+            rustup target install armv7-apple-ios
+            ;;
+        armv7s-apple-ios)
+            rustup target install armv7s-apple-ios
+            ;;
+        i386-apple-ios)
+            rustup target install i386-apple-ios
+            ;;
+        x86_64-apple-ios)
+            rustup target install x86_64-apple-ios
+            ;;
+        *)
+            rustup target add $TARGET
+            ;;
+    esac
 
     # This fetches latest stable release
     local tag=$(git ls-remote --tags --refs --exit-code https://github.com/japaric/cross \
