@@ -91,8 +91,7 @@ before_install:
   - rustup self update
 
 install:
-  # - sh ci/install.sh
-  - rustup target add $TARGET
+  - sh ci/install.sh
   - source ~/.cargo/env || true
 
 script:
