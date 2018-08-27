@@ -9,6 +9,13 @@ main() {
     cargo build --target $TARGET --release
     cargo build --target $TARGET --release --features full
 
+    cargo build --target $TARGET --example listenlocalhost
+    cargo build --target $TARGET --example getdevices
+    cargo build --target $TARGET --example easylisten
+    cargo build --target $TARGET --example savefile
+    cargo build --target $TARGET --example getstatistics
+    cargo build --target $TARGET --example streamlisten
+
     if [ ! -z $DISABLE_TESTS ]; then
         return
     fi
