@@ -14,7 +14,7 @@ main() {
     cargo build --target $TARGET --example easylisten
     cargo build --target $TARGET --example savefile
     cargo build --target $TARGET --example getstatistics
-    cargo build --target $TARGET --example streamlisten
+    cargo build --target $TARGET --example streamlisten --features tokio
 
     if [ ! -z $DISABLE_TESTS ]; then
         return
