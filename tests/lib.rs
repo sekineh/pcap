@@ -235,7 +235,7 @@ fn test_raw_fd_api() {
         let (fd_in, fd_out) = (pipe[0], pipe[1]);
 
         let filename = tmpfile.clone();
-        thread::spawn(move || {
+        let handle = thread::spawn(move || {
             // Cat the pcap into the pipe in a separate thread.
             // Hypothetically, we could do any sort of processing here,
             // like decoding from a gzip stream.
@@ -254,6 +254,7 @@ fn test_raw_fd_api() {
 
         // Verify that packets match
         packets.verify(&mut cap);
+        handle.join().unwrap();
     }
 }
 
