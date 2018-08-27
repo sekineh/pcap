@@ -18,7 +18,7 @@ main() {
             #rustup target add $TARGET
             ;;
         i686-unknown-linux-gnu)
-            sudo apt update
+            # sudo apt update
             sudo apt-get install -y --no-install-recommends \
                 gcc-multilib libc6-dev ca-certificates
             sudo apt-get install -y libpcap0.8-dev
@@ -26,7 +26,7 @@ main() {
             rustup target add $TARGET
             ;;
         aarch64-unknown-linux-gnu)
-            sudo apt-get update
+            # sudo apt-get update
             sudo apt-get install -y --no-install-recommends \
                 gcc libc6-dev ca-certificates \
                 gcc-aarch64-linux-gnu libc6-dev-arm64-cross qemu-user
